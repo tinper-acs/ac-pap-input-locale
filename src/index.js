@@ -240,7 +240,7 @@ class AcInputLocale extends Component {
       return str.replace(/^\s+|\s+$/gm,'');
     }
     //校验处理
-    checkValidValue =(rule, value, callback)=>{debugger
+    checkValidValue =(rule, value, callback)=>{
       let self = this;
       let {required,localeList,locale,sysLocale} = self.state;
       let currentLanguage = self.state.modalLocale[locale]?self.state.modalLocale[locale].currentLang:"当前语种" ;
