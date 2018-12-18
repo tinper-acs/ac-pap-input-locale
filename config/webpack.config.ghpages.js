@@ -6,10 +6,10 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const nodeExternals = require('webpack-node-externals');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const baseConfig = require('./webpack.base')
+
 const pkg = require('../package.json')
 const name = pkg.name
 let publicPath = '/'
@@ -22,13 +22,13 @@ if (name.startsWith('@yonyou')) {
 }
 
 module.exports = webpackMerge(baseConfig, {
-  mode:'development',
+  mode:'production',
   entry: {
       app: path.join(__dirname, '../demo/index.js')
   },
   // externals:['react','react-dom','prop-types'],
   output: {
-      filename: '[name].[hash]11.js',
+      filename: '[name].[hash].js',
       path: path.join(__dirname, '../ghpages'),
       publicPath: publicPath
   },
@@ -59,7 +59,7 @@ module.exports = webpackMerge(baseConfig, {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true 
       }),
       new OptimizeCSSAssetsPlugin({})  // use OptimizeCSSAssetsPlugin
     ], // [new UglifyJsPlugin({...})]
@@ -80,7 +80,7 @@ module.exports = webpackMerge(baseConfig, {
         },
         styles: {
           name: 'styles',
-          test: /\.(sa|sc|c|le)ss$/,
+          test: /\.(sa|sc|c)ss$/,
           chunks: 'all',
           enforce: true
         }

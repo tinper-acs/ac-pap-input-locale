@@ -6,13 +6,11 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const nodeExternals = require('webpack-node-externals');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const baseConfig = require('./webpack.base')
 module.exports = webpackMerge(baseConfig, {
   mode:'production',
-  // devtool: '#source-map',
   entry: {
       app: path.join(__dirname, '../src/index.js')
   },
@@ -69,11 +67,11 @@ module.exports = webpackMerge(baseConfig, {
     //   name: 'manifest'
     // },
     minimizer: [
-      // new UglifyJsPlugin({
-      //   cache: true,
-      //   parallel: true,
-      //   sourceMap: true
-      // }),
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
       new OptimizeCSSAssetsPlugin({})  // use OptimizeCSSAssetsPlugin
     ], // [new UglifyJsPlugin({...})]
     // splitChunks:{

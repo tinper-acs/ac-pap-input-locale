@@ -22,8 +22,13 @@
     "type": "git",
     "url": "git+https://github.com/tinper-acs/ac-pap-input-locale.git"
   },
-  "author": "wangshih@yonyou.com",
+  "author": "lucian",
   "license": "MIT",
+  "files": [
+    "package.json",
+    "dist",
+    "README.md"
+  ],
   "devDependencies": {
     "autoprefixer": "^9.1.5",
     "babel-cli": "^6.26.0",
@@ -60,6 +65,7 @@
     "markdown-styles": "^3.1.10",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.10.0",
+    "open-browser-webpack-plugin": "0.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss": "^7.0.2",
     "postcss-loader": "^3.0.0",
@@ -88,7 +94,7 @@
     "bee-button": "^1.0.6",
     "bee-form-control": "^1.0.7",
     "bee-label": "^1.0.0",
-    "bee-popover": "^1.0.3",
-    "bee-popconfirm": "^1.0.9"
+    "bee-popconfirm": "^1.0.9",
+    "bee-popover": "^1.0.3"
   }
 }

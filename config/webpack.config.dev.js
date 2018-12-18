@@ -4,6 +4,7 @@ const webpackMerge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OpenBrowserPlugin = require("open-browser-webpack-plugin");
 const config = webpackMerge(baseConfig, {
   mode: 'development',
   devtool: '#cheap-module-eval-source-map',
@@ -22,29 +23,22 @@ const config = webpackMerge(baseConfig, {
         test: /\.css$/,
         use: [
           'style-loader',
-          "css-loader",
-          {
-            loader: "postcss-loader"
-          }
+          "css-loader"
         ]
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', {
-          loader: "postcss-loader"
-        },'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', {
-          loader: "postcss-loader"
-        },'less-loader']
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   },
   devServer: {
     //主机域名
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     compress: true,
     port: '3002',
     //服务于webpack生成的静态文件，用dist
@@ -80,6 +74,9 @@ const config = webpackMerge(baseConfig, {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
+    }),
+    new OpenBrowserPlugin({
+      url: `http://127.0.0.1:3000`
     }),
     new webpack.HotModuleReplacementPlugin()
   ]
