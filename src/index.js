@@ -300,7 +300,7 @@ class AcInputLocale extends Component {
     
     }
     render() {
-      const { className, placeholder, placement, onChange,isTextarea, backdrop } = this.props
+      const { className, placeholder, placement, onChange,isTextarea, backdrop, disabled } = this.props
       let { localeValue, locale, localeList, status, modalLocale,sysLocale } = this.state
       let defaultValue;
       if(localeList && localeList[sysLocale] && localeList[sysLocale].value){
@@ -333,6 +333,7 @@ class AcInputLocale extends Component {
               ):(
                 <div>
                   <FormControl
+                    disabled={disabled}
                     // value={localeValue}
                     className="input-text"
                     {...formControlTypeOption}
@@ -367,7 +368,7 @@ class AcInputLocale extends Component {
                     }
                     ref={(input) => {this.textInput = input}}
                   />
-                  <div className="input-icon" onClick = { this.open } />
+                  <div className="uf uf-globe input-icon" onClick = {disabled?()=>{}: this.open } />
                   <span className='error'>
                     {getFieldError(this.props.inputId)}
                   </span>
@@ -456,6 +457,7 @@ class AcInputLocale extends Component {
               ):(
                 <div>
                   <FormControl
+                  disabled={disabled}
                     className="input-text"
                     value={localeValue}
                     {...formControlTypeOption}
@@ -478,7 +480,7 @@ class AcInputLocale extends Component {
                     }
                     ref={(input) => {this.textInput = input}}
                   />
-                  <div className="input-icon" onClick = { this.open } />
+                  <div className="uf uf-globe input-icon" onClick = {disabled?()=>{}: this.open } />
                 </div>
               )
             }

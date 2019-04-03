@@ -1,17 +1,26 @@
-@import "../node_modules/tinper-bee-core/scss/index.scss";
-@import "../node_modules/bee-layout/src/Layout.scss";
-@import "../node_modules/bee-panel/src/Panel.scss";
-@import "../node_modules/bee-button/src/button.scss";
-@import "../static/demo/atom-one-dark.css";
-
 .demoPadding{
-    button{
-        margin: auto 5px;
+    padding: 10px;
+    width: 300px;
+    .u-button{
+      width: 100px;
+      margin-right: 10px;
+      line-height: 36px;
+      height: 36px;
+      padding: 0;
     }
-    .divider{
-        margin: 6px 0;
-        height: 1px;
-        overflow: hidden;
-        background-color: #e0e0e0;
-    }
+}
+
+.input2{
+    margin-top: 30px;
+}
+
+.btn{
+    display: flex;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.btn>button:nth-child(2){
+    margin-left: 10px;
+    margin-right: 10px;
 }
