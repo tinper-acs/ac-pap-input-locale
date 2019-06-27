@@ -33,6 +33,7 @@ const propTypes = {
     locale:PropTypes.string.isRequired, //当前语种
     localeList:PropTypes.object.isRequired, //语种数组
     onChange:PropTypes.func, //文本框改变回掉
+    onBlur:PropTypes.func,
     isTextarea:PropTypes.bool, // 是否textarea 默认false
     modalLocale:PropTypes.object,
     backdrop: PropTypes.bool,  //是否弹出遮罩层/遮罩层点击是否触发关闭
@@ -300,7 +301,7 @@ class AcInputLocale extends Component {
     
     }
     render() {
-      const { className, placeholder, placement, onChange,isTextarea, backdrop, disabled } = this.props
+      const { className, placeholder, placement, onChange,onBlur,isTextarea, backdrop, disabled } = this.props
       let { localeValue, locale, localeList, status, modalLocale,sysLocale } = this.state
       let defaultValue;
       if(localeList && localeList[sysLocale] && localeList[sysLocale].value){
@@ -359,7 +360,11 @@ class AcInputLocale extends Component {
                           localeValue:v,
                           localeList
                         })
-                      }}
+                      },
+                      onBlur:()=>{
+                        onBlur&&onBlur(this.state.localeList)
+                      }
+                    }
                     ) }
                     onClick={
                       (e) => {
@@ -472,6 +477,9 @@ class AcInputLocale extends Component {
                         localeValue:v,
                         localeList
                       })
+                    }}
+                    onBlur={()=>{
+                      onBlur&&onBlur(this.state.localeList)
                     }}
                     onClick={
                       (e) => {
